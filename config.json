@@ -1,0 +1,17 @@
+{
+  "publisher": {
+    "host": "publisher",
+    "port": 9999,
+    "mode": "publisher"
+  },
+  "adserver": {
+    "host": "adserver",
+    "port": 9999,
+    "mode": "adserver"
+  },
+  "external": {
+    "host": "external",
+    "port": 9999,
+    "mode": "external"
+  }
+}

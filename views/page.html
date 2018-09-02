@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <script type="text/javascript" src="http://{{externalHost}}:{{externalPort}}/beacon.js"></script>
+  </head>
+  <body>
+    <div class="ui grid">
+      <div class="eight wide column">
+        <div class="ui segment">
+          <button id="button1" class="ui button">Send request to adserver</button>
+          <button id="button2" class="ui button">Create cookie by adserver</button>
+        </div>
+      </div>
+      <div class="eight wide column">
+        <div class="ui segment">
+          bloc2
+        </div>
+      </div>
+    </div>
+    <iframe src="http://{{publisherHost}}:{{publisherPort}}/resource"></iframe>
+    <iframe src="http://{{adserverHost}}:{{adserverPort}}/proxy"></iframe>
+    <script>
+      document.querySelector('#button1').addEventListener('click', function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://{{adserverHost}}:{{adserverPort}}/', true);
+        xhr.withCredentials = true;
+        xhr.onload = function() {
+          console.log(xhr.responseText);
+        };
+        xhr.send();
+      });
+
+      document.querySelector('#button2').addEventListener('click', function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://{{adserverHost}}:{{adserverPort}}/create-cookie', true);
+        xhr.withCredentials = true;
+        xhr.onload = function() {
+          console.log(xhr.responseText);
+        };
+        xhr.send();
+      });
+    </script>
+  </body>
+</html>
